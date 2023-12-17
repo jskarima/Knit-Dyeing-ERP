@@ -1,0 +1,137 @@
+extends layout 
+
+
+block content
+    style. 
+        body{
+        background: #F0F2F5;
+        }
+    
+    //- .container.mt-2
+    //-     .container.pt-4
+    //-         .p-3.bg-dark.text-light.text-center.rounded
+    //-             h6.display-6 Booking Order 
+    .container
+        .container.pt-4
+            .p-3.bg-light.text-center.rounded
+                h6.display-6(style='color: #0866FF;') Booking Order 
+
+    form.row.g-3.mt-3.bg-light.p-3.rounded(action="/order" method="post") 
+        .col-md-2
+            label.form-label(for='') Buyer
+            input.form-control.border-success(type='text' name="buy" requird)
+
+        .col-md-2
+            label.form-label(for='') OR/ Style  
+            input.form-control.border-success(type='text' name="or" requird)
+
+        .col-md-2
+            label.form-label(for='') R/F
+            input.form-control.border-success(type='text' name="rf" requird)
+
+        .col-md-2
+            label.form-label(for='') Session:
+            input.form-control.border-success(type='text' name="session" requird)
+        
+        //- .col-md-2
+        //-     label.form-label(for='') Session:
+        //-     select.form-select.border-success(aria-label='Default select example')
+        //-         option(selected='') Select Session
+        //-         option(value='Summer 24') Summer 24
+        //-         option(value='Winter 24') Winter 24
+        //-         option(value='Summer 25') Summer 25
+        //-         option(value='Summer 25') Winter 25
+        //-         option(value='Summer 26') Summer 26
+        //-         option(value='Summer 26') Winter 26
+        //-         option(value='Summer 27') Summer 27
+        //-         option(value='Summer 27') Winter 27
+        //-         option(value='Summer 28') Summer 28
+        //-         option(value='Summer 28') Winter 28
+        //-         option(value='Summer 29') Summer 29
+        //-         option(value='Summer 29') Winter 29
+        //-         option(value='Summer 30') Summer 30
+        //-         option(value='Summer 30') Winter 30
+
+        .col-md-2
+            label.form-label(for='') Yarn Count
+            input.form-control.border-success(type='text' name="ycount" requird)
+        
+        //- .col-md-2
+        //-     label.form-label(for='') Yarn Count:
+        //-     select.form-select.border-success(aria-label='Default select example')
+        //-         option(selected='') Select Yarn Count
+        //-         option(value='1') 32/ Card 
+        //-         option(value='2') 34/ Card 
+        //-         option(value='3') 36/ Card 
+        //-         option(value='3') 38/ Card 
+        //-         option(value='3') 40/ Card 
+
+        
+
+        .col-md-2
+            label.form-label(for='') Yarn/ Qty
+            input.form-control.border-success(type='text' name="yqty" requird)
+        
+        .col-md-2
+            label.form-label(for='') Lot No
+            input.form-control.border-success(type='text' name="lotno" requird)
+        
+
+        //- .col-md-2
+        //-     label.form-label(for='') F/ Type:
+        //-     select.form-select.border-success(aria-label='Default select example')
+        //-         option(selected='') Select F/ Type
+        //-         option(value='1') S/J 100% Cotton 
+        //-         option(value='2') Lyc S/J 95% Cotton 5% Elastan
+        //-         option(value='3') Terry 100% Cotton 
+        .col-md-2
+            label.form-label(for='') F/ Type
+            input.form-control.border-success(type='text' name="ftype" requird)
+        
+
+        .col-md-2
+            label.form-label(for='') S/ L 
+            input.form-control.border-success(type='text' name="sl" requird)
+        
+        .col-md-2
+            label.form-label(for='') GSM
+            input.form-control.border-success(type='text' name="gsm" requird)
+
+        //- .col-md-2
+        //-     label.form-label(for='') GSM
+        //-     select.form-select.border-success(aria-label='Default select example')
+        //-         option(selected='') Select GSM
+        //-         option(value='1') 120
+        //-         option(value='1') 140
+        //-         option(value='1') 160
+        //-         option(value='1') 180
+        //-         option(value='1') 200
+
+
+        .col-md-2
+            label.form-label(for='') Color 
+            input.form-control.border-success(type='text' name="color" requird)
+
+        .col-md-2
+            label.form-label(for='') M/ Dia 
+            input.form-control.border-success(type='text' name="mdia" requird)
+        
+        .col-md-2
+            label.form-label(for='') F/ Dia 
+            input.form-control.border-success(type='text' name="fdia" requird)
+        
+
+        //- .col-md-2
+        //-     label.form-label(for='') GSM Write 
+        //-     input.form-control.border-success(type='text' name="rfno" requird)
+
+        //- .col-md-2
+        //-     label.form-label(for='') Session Write 
+        //-     input.form-control.border-success(type='text' name="rfno" requird)
+        
+
+        .mb-4.mt-5
+            button.btn.btn-outline-dark.i.bi.bi-cursor-fill(type="submit") Submit Booking
+
+
+

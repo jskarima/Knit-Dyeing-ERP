@@ -1,0 +1,74 @@
+extends layout 
+
+
+block content 
+    style. 
+        body{
+        background: #F0F2F5;
+        }
+
+    .container
+        .container.pt-4
+            .p-3.bg-light.text-center.rounded
+                h6.display-6(style='color: #0866FF;') GSM & Dia
+
+    //- .container.mt-4
+    //-     .container.pt-4
+    //-         .p-3.bg-dark.text-light.text-center.rounded
+    //-             //h6.display-6 Live Post & Solution
+    //-             h6.display-6 GSM & Dia
+
+    .container.mt-5.d-flex.justify-content-center.align-items-center
+        form(action="/chat", enctype="multipart/form-data", method="post") 
+            .mb-4
+                label.form-label(for='') R/ F 
+                input.form-control.border-success(type='text' name="ref" placeholder='')
+            .mb-4
+                label.form-label(for='') Your Image
+                input.form-control.border-success(type='file' name="image" placeholder='')
+            .mb-4 
+                label.form-label(for='') Write your Gsm Fail Reason Message
+                textarea.form-control.border-success(name="message", cols="30", rows="5") 
+            .mb-4 
+                button.btn.btn-outline-success.i.bi.bi-cursor-fill(type="submit") Send Post
+
+    // Search Input
+    .col-md-2.mt-3
+        input#searchInput.form-control.border-primary(type='text' placeholder='Search' oninput='filterTable()')
+    br
+
+    .table-responsive
+        table.table.text-center.table-bordered.border-primary
+            tr(style='background: #FFFFFF;') 
+                th R/F  
+                th Message 
+                th Image 
+            each chat in chats 
+                tr  
+                    td=chat.ref 
+                    td=chat.message 
+                    td 
+                        img(src="/uploads/" + chat.image, alt="", srcset="" width=400)
+
+
+    script.
+            function filterTable() {
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("searchInput");
+                filter = input.value.toUpperCase();
+                table = document.querySelector(".table");
+                tr = table.querySelectorAll("tbody tr");
+
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0]; // Change index based on the column you want to filter
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+

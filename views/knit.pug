@@ -1,0 +1,182 @@
+extends layout 
+
+
+block content 
+    style. 
+        body{
+        background: #F0F2F5;
+        }
+    
+    .container
+        .container.pt-4
+            .p-3.bg-light.text-dark.text-center.rounded
+                strong.fs-4(style='color: #0866FF;') Knitting Bulk Production
+
+    //- .container.mt-2
+    //-     .container.pt-4
+    //-         .p-3.bg-dark.text-light.text-center.rounded
+    //-             h6.display-6 Knitting Bulk Production
+
+    //- form.row.g-3.mt-1(action="/test/knit" method="post") 
+    form.row.g-3.mt-3.bg-light.p-3.rounded(action="/test/knit" method="post") 
+        .col-md-2
+            label.form-label(for='') Buyer
+            input.form-control.border-success(type='text' name="rfno" requird)
+
+        .col-md-2
+            label.form-label(for='') Style/ OR No
+            input.form-control.border-success(type='text' name="buyer" )
+
+        .col-md-2
+            label.form-label(for='') R/ F
+            input.form-control.border-success(type='text' name="style" )
+
+        .col-md-2
+            label.form-label(for='') Session:
+            select.form-select(aria-label='Default select example')
+                option(selected='') Select Session
+                option(value='1') Summer
+                option(value='2') Winter
+                option(value='3') any
+            //- input.form-control.border-success(type='text' name="" )
+
+        .col-md-2
+            label.form-label(for='') Yarn Count:
+            input.form-control.border-success(type='text' name="ycount" )
+
+        .col-md-2
+            label.form-label(for='') Lot No:
+            input.form-control.border-success(type='text' name="lotno" )
+
+        .col-md-2
+            label.form-label(for='') Fabric/ Type:
+            input.form-control.border-success(type='text' name="fabtype" )
+
+        .col-md-2
+            label.form-label(for='') S / L:
+            input.form-control.border-success(type='text' name="sl" )
+
+        .col-md-2
+            label.form-label(for='') Colour:
+            input.form-control.border-success(type='text' name="colour" )
+
+        .col-md-2
+            label.form-label(for='') Gsm:
+            input.form-control.border-success(type='text' name="reqgsm" )
+
+        .col-md-2
+            label.form-label(for='') M/ Dia:
+            input.form-control.border-success(type='text' name="mdia" )
+
+        .col-md-2
+            label.form-label(for='') F/ Dia:
+            input.form-control.border-success(type='text' name="fdia" )
+
+        .col-md-2
+            label.form-label(for='') Knit Place Company:
+            input.form-control.border-success(type='text' name="knitcompany" )
+
+        .col-md-2
+            label.form-label(for='') Production Qty:
+            input.form-control.border-success(type='text' name="productionqty" )
+
+        .col-md-2
+            label.form-label(for='') Blance Qty
+            input.form-control.border-success(type='text' name="balanceqty" )
+
+        .col-md-2
+            label.form-label(for='') Start Date:
+            input.form-control.border-success(type='date' name="startdate" )
+
+        .col-md-2
+            label.form-label(for='') Close Date
+            input.form-control.border-success(type='date' name="closedate" )
+
+        .md-3
+            label.form-label(for='') Note:
+            textarea.form-control.border-success(name="note" cols="30" rows="3", )
+
+        .md-3
+            button.btn.btn-outline-success(type="submit") Submit
+
+    //- .container
+    //-     .container.pt-5
+    //-         .p-5.bg-dark.text-light.text-center.rounded
+    //-             h1.p-5.display-5  Knitting Bulk Production Summary View
+    
+    .container
+        .container.pt-5
+            .p-3.bg-white.text-light.text-center
+                h1.p-5.display-5(style='color: #0866FF;')  Knitting Bulk Production Summary View
+        
+    // Search Input
+    .col-md-2.mt-3
+        input#searchInput.form-control(type='text' placeholder='Search' oninput='filterTable()')
+
+    .table-responsive
+        table.table-align-middle.table.table-bordered.border-info.table-dark.table-striped.mt-4.text-center.table-hover
+            thead
+                tr
+                    th R/F
+                    th Buyer
+                    th Style
+                    th Y/ Count
+                    th Lot
+                    th F/Type
+                    th S/ L
+                    th Colour
+                    th Req Gsm
+                    th Aft Gsm
+                    th M/ Dia
+                    th F/ Dia
+                    th Knit Place
+                    th Pro Qty
+                    th Blance
+                    th Start
+                    th Close
+                    th Note
+                    th Actions 
+            tbody
+                each knit in knits 
+                    tr
+                        td= knit.rfno
+                        td= knit.buyer
+                        td= knit.style
+                        td= knit.ycount
+                        td= knit.lotno
+                        td= knit.fabtype
+                        td= knit.sl
+                        td= knit.colour
+                        td= knit.reqgsm
+                        td= knit.aftgsm
+                        td= knit.mdia
+                        td= knit.fdia
+                        td= knit.knitcompany
+                        td= knit.productionqty
+                        td= knit.balanceqty
+                        td= knit.startdate
+                        td= knit.closedate
+                        td= knit.note
+                        td 
+                            a.btn.btn-danger.btn-sm.i.bi.bi-trash3(href=`/test/delete/${knit.id}`) 
+        
+        script.
+            function filterTable() {
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("searchInput");
+                filter = input.value.toUpperCase();
+                table = document.querySelector(".table");
+                tr = table.querySelectorAll("tbody tr");
+
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0]; // Change index based on the column you want to filter
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }

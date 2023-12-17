@@ -1,0 +1,31 @@
+extends layout 
+
+
+block content 
+
+  style. 
+    body{
+      background: #F0F2F5;
+    }
+
+  .container
+    .container.pt-4
+      .p-3.bg-light.text-dark.text-center.rounded
+        strong.fs-4(style='color: #0866FF;') Knit & Dyeing
+
+  .container.rounded(style='width: 300px; background: #FFFFFF;') 
+    h1.text-center.my-4.mt-4(style='color: #0866FF;') Login
+
+    // Login form
+    .container.d-flex.justify-content-center.align-items-center
+      form(action="/login", method="post") 
+        .mb-3
+          label(for='username', class='form-label') Username:
+          input.form-control(type="text", name="username" placeholder='')
+        
+        .mb-3
+          label(for='password', class='form-label') Password:
+          input.form-control(type="password", name="password" placeholder='')
+        .mb-3
+          button.btn.btn-primary.w-100(type="submit") Login
+

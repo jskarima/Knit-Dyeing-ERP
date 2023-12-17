@@ -1,0 +1,166 @@
+
+extends layout
+
+block content
+    style. 
+        body{
+        background: #F0F2F5;
+        }
+
+    
+    .container
+        .container.pt-4
+            .p-3.bg-light.text-dark.text-center.rounded
+                strong.fs-4(style='color: #0866FF;') R & D Sample 
+
+    //- .container.mt-4
+    //-     .container.pt-4
+    //-         .p-3.bg-dark.text-light.text-center.rounded
+    //-             h6.display-6 R & D Sample 
+
+    //- form.row.g-3.mt-1(action="/sample" method="post") 
+    form.row.g-3.mt-3.bg-light.p-3.rounded(action="/sample" method="post") 
+        .col-md-2
+            label.form-label(for='') Job No:
+            input.form-control(type='text' name="job" requird)
+
+        .col-md-2
+            label.form-label(for='') Buyer
+            input.form-control(type='text' name="buyer" )
+
+        .col-md-2
+            label.form-label(for='') OR-NO / Style
+            input.form-control(type='text' name="style" )
+
+        .col-md-2
+            label.form-label(for='') Yarn Count:
+            input.form-control(type='text' name="ycount" )
+
+        .col-md-2
+            label.form-label(for='') Lot No:
+            input.form-control(type='text' name="lotno" )
+
+        .col-md-2
+            label.form-label(for='') Fabric/ Type:
+            input.form-control(type='text' name="fabtype" )
+
+        .col-md-2
+            label.form-label(for='') S / L:
+            input.form-control(type='text' name="sl" )
+
+        .col-md-2
+            label.form-label(for='') Colour:
+            input.form-control(type='text' name="colour" )
+
+        .col-md-2
+            label.form-label(for='') Require Gsm:
+            input.form-control(type='text' name="reqgsm" )
+
+        .col-md-2
+            label.form-label(for='') After Gsm:
+            input.form-control(type='text' name="aftgsm" )
+
+        .col-md-2
+            label.form-label(for='') M/ Dia:
+            input.form-control(type='text' name="mdia" )
+
+        .col-md-2
+            label.form-label(for='') F/ Dia:
+            input.form-control(type='text' name="fdia" )
+
+        .col-md-2
+            label.form-label(for='') Knit Place Company:
+            input.form-control(type='text' name="knitcompany" )
+
+        .col-md-2
+            label.form-label(for='') Knit Close Date:
+            input.form-control(type='date' name="knitclodate" )
+
+        .col-md-2
+            label.form-label(for='') Actual Close Date
+            input.form-control(type='date' name="actuclodate" )
+
+        .md-3
+            label.form-label(for='') Note:
+            textarea.form-control(name="note" cols="30" rows="3", )
+
+        .md-3
+            button.btn.btn-outline-success(type="submit") Submit
+
+
+    .container
+        .container.pt-5
+            .p-3.bg-white.text-light.text-center
+                h1.p-5.display-5(style='color: #0866FF;')  Sample Summary View
+
+    //- // Search Input
+    .col-md-2.mt-3
+        input#searchInput.form-control(type='text' placeholder='Search' oninput='filterTable()')
+
+    // Sample Table
+    .table-responsive
+        table.table-align-middle.table.table-bordered.border-info.table-dark.table-striped.mt-4.text-center.table-hover
+            thead
+                tr
+                    th Job No
+                    th Buyer
+                    th Style
+                    th Yarn Count
+                    th Lot No
+                    th Fabric/ Type
+                    th S/ L
+                    th Colour
+                    th Require Gsm
+                    th After Gsm
+                    th M/ Dia
+                    th F/ Dia
+                    th Knit Place
+                    th Knit Close Date
+                    th Actual Close Date
+                    th Note
+                    th Actions 
+            tbody
+                each sample in samples 
+                    tr
+                        td= sample.job
+                        td= sample.buyer
+                        td= sample.style
+                        td= sample.ycount
+                        td= sample.lotno
+                        td= sample.fabtype
+                        td= sample.sl
+                        td= sample.colour
+                        td= sample.reqgsm
+                        td= sample.aftgsm
+                        td= sample.mdia
+                        td= sample.fdia
+                        td= sample.knitcompany
+                        td= sample.knitclodate
+                        td= sample.actuclodate
+                        td= sample.note
+                        td 
+                            a.btn.btn-danger.btn-sm.i.bi.bi-trash3(href=`/delete/${sample.id}`) 
+
+        script.
+            function filterTable() {
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("searchInput");
+                filter = input.value.toUpperCase();
+                table = document.querySelector(".table");
+                tr = table.querySelectorAll("tbody tr");
+
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0]; // Change index based on the column you want to filter
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+
+
+

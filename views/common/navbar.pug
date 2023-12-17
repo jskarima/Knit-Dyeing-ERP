@@ -1,0 +1,46 @@
+nav.navbar.navbar-expand-lg.bg-dark.navbar-dark 
+  .container
+    a.navbar-brand(href='/') Knit & Dyeing (ERP)
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.ms-auto.mb-2.mb-lg-0
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/') Home
+        //- li.nav-item
+        //-   a.nav-link.active(aria-current='page' href='/profile') Profile
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/sample') R&D Sample
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/test/knit') Knitting Bulk
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/test/quality') Quality Section 
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/chat') Gsm & Dia
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/order') Booking
+
+          
+        //- li.nav-item
+        //-   a.nav-link.active(aria-current='page' href='/contact') Contact
+        //- li.nav-item
+        //-   a.nav-link.active(aria-current='page' href='/laptop') Laptop Requiston
+        //- li.nav-item
+        //-   a.nav-link.active(aria-current='page' href='/mouse-details') Mouse Inventory
+        //- li.nav-item
+        //-   a.nav-link.active(aria-current='page' href='/login') Login
+        //- li.nav-item
+        //-   a.nav-link.active(aria-current='page' href='/register') Register
+        
+        li.nav-item.dropdown
+          a.nav-link.active.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+            | Account
+          ul.dropdown-menu
+            li
+              a.dropdown-item(href='/login') Login
+            li
+              a.dropdown-item(href='/signup') Signup
+            li
+              hr.dropdown-divider
+            li
+              a.dropdown-item(href='#') Logout
